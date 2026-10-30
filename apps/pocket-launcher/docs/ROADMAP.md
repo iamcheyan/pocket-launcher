@@ -44,6 +44,28 @@ The launcher only previews content and calls `POST /api/apps/{id}/launch`.
 - No real media/files/notifications providers.
 - Real device profiles are selected manually, not detected.
 
+## Host toolchain and NixOS dependency delta
+
+This project adds **zero** NixOS dependencies on HX90. Its build and test
+toolchain (`go`, `node`, `chromium`, `make`) is already provided by the system
+profile, and it was confirmed available both on the existing PATH and inside a
+project-local `nix shell nixpkgs#go nixpkgs#nodejs nixpkgs#chromium`:
+
+| tool | version observed |
+|---|---|
+| Go | 1.26.6 |
+| Node.js | 24.19.0 |
+| Chromium | 152.0.7977.75 |
+
+`~/nixos-config` was therefore not modified. The goal's flock
+(`/home/tetsuya/.cache/hx90-nixos-config-goals.lock`) was available and was used
+read-only while checking `nixos-rebuild build --impure --flake ~/nixos-config#hx90`.
+That evaluation currently fails while building the **unrelated** local
+`~/development/inua` checkout (`internal/ui/appmenu.go: b.appMenuPID undefined`),
+which is a pre-existing uncommitted work-in-progress outside this project. No
+switch was performed, no other host was touched, and nothing from the shared
+Nix configuration was committed or pushed.
+
 ## Next steps
 
 1. Real `CapabilityProvider` (hardware probe) and a manual override UI in Pocket Settings.
