@@ -33,14 +33,18 @@ export default function Home(ctx: PageContext) {
   const {
     t, openPage, handoff, activities, home, capabilities, setSelectedActivity, setPage, orderedSections,
   } = ctx;
+  const summary = home?.systemSummary;
+  // Capability chips replace a dashboard: they explain what this device
+  // actually exposes, and the mock summary reports provider status.
+  const summaryStatus = summary?.mock ? t('mockData') : t('systemReady');
 
   const renderSystemSection = () => (
     <section className="home-section" key="system">
       <div className="section-heading"><h2>{t('system')}</h2><MockBadge label={t('mock')}/></div>
       <div className="system-panel">
         <div>
-          <strong>{t('systemReady')}</strong>
-          <p>{t('systemSummaryDetail')}</p>
+          <strong>{summaryStatus}</strong>
+          <p>{summary?.status || t('systemReady')} · {summary?.message || t('systemSummaryDetail')}</p>
         </div>
         <div className="capability-list">
           {capabilities.filter(cap => cap.available).map(cap => (
