@@ -13,7 +13,7 @@ PJOS 统一主屏。PocketJS 前端（TypeScript + React + Vite）→ 单一 Go 
 ```bash
 make build          # 构建前端 + 后端
 make test           # Go 测试 + i18n parity + typecheck + 构建 + 浏览器 smoke
-make dev            # launcherd(:18788) + Vite dev server
+make dev            # launcherd(:18788) + Vite dev server (API via POCKET_LAUNCHER_API)
 ```
 
 单独运行生产形态（launcherd 同时托管构建后的 SPA）：
@@ -32,10 +32,11 @@ cd ../backend/launcherd && \
 ```
 apps/pocket-launcher/
 ├── frontend/            # PocketJS UI（React + TypeScript + Vite）
-│   ├── src/             # main.tsx / api.ts / i18n.ts / style.css
+│   ├── src/             # main.tsx / pages/ / api.ts / i18n.ts / gamepad.ts / style.css
 │   └── scripts/         # i18n parity, browser smoke, screenshots, perf
-├── backend/launcherd/   # Go API、SQLite 迁移、mock providers
-├── docs/                # 架构、API、DB、设计 DNA、截图
+├── backend/launcherd/   # Go API、SQLite 迁移、mock providers（按功能分文件）
+├── docs/                # 架构、API、DB、设计 DNA、测试、性能、截图
+├── tests/               # API 契约脚本
 └── Makefile (repo root)
 ```
 
