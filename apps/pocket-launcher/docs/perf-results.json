@@ -1,0 +1,44 @@
+{
+  "measuredAt": "2026-10-30T08:40:01.224Z",
+  "environment": "HX90 workstation, headless Chromium 152, production Vite build served by launcherd, mock providers",
+  "backendColdReadyMs": 202,
+  "apiHomeMedianMs": 2,
+  "frontendShellMedianMs": 114,
+  "fcpMedianMs": 100,
+  "lcpMedianMs": 100,
+  "searchMedianMs": 196,
+  "runs": [
+    {
+      "shellReady": 207,
+      "fcp": 176,
+      "lcp": 176,
+      "searchMs": 198
+    },
+    {
+      "shellReady": 113,
+      "fcp": 100,
+      "lcp": 100,
+      "searchMs": 196
+    },
+    {
+      "shellReady": 114,
+      "fcp": 80,
+      "lcp": 80,
+      "searchMs": 194
+    },
+    {
+      "shellReady": 113,
+      "fcp": 84,
+      "lcp": 84,
+      "searchMs": 196
+    },
+    {
+      "shellReady": 122,
+      "fcp": 100,
+      "lcp": 100,
+      "searchMs": 197
+    }
+  ],
+  "shellUnder1s": true,
+  "notes": "Cold ready is backend process spawn to /api/health; shell is navigation to first heading; search is keypress to first grouped result. This is a workstation measurement, not a device measurement."
+}
