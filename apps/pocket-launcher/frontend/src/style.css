@@ -51,3 +51,4 @@
 }
 @media(max-width:900px){.profile-handheld .sidebar{width:190px}.profile-handheld .main-area{margin-left:190px}.profile-handheld .loading-line{left:190px}}
 @media(max-width:620px){.profile-handheld .main-area,.profile-dap .main-area,.profile-eink .main-area,.profile-desktop .main-area{margin-left:0}.profile-handheld .sidebar{display:none}.profile-handheld .loading-line,.profile-dap .loading-line{left:0}}
+@import './layout-responsive.css';
