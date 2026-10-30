@@ -1,0 +1,3 @@
+# Screenshots and the bundled font are binary; keep them out of text diffs.
+*.png binary
+*.ttf binary
