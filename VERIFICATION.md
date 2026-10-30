@@ -1,8 +1,8 @@
 # Verification — pocket-launcher @ 2026-10-31
 
 - Verdict: PASS
-- Commit: `__COMMIT__` (screenshots + fixes; this document is the following commit)
-- Remote: `__REMOTE__`
+- Commit: `fdc91defffe8a4ae07476f2887fc17dc2cf451b0` (screenshots + fixes; this document is the following commit)
+- Remote: `fdc91defffe8a4ae07476f2887fc17dc2cf451b0`
 - Runtime: `LAUNCHER_DB=.tmp/probe.sqlite LAUNCHER_ADDR=127.0.0.1:18788 LAUNCHER_STATIC=apps/pocket-launcher/frontend/dist .tmp/launcherd` ; port 18788 ; backend Go (launcherd)
 - Toolchain: go 1.26.0, node v22.23.3, Chrome 155.0.8059.84
 
