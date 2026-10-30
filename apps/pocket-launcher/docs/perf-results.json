@@ -1,42 +1,42 @@
 {
-  "measuredAt": "2026-10-30T08:40:01.224Z",
+  "measuredAt": "2026-10-30T08:59:26.675Z",
   "environment": "HX90 workstation, headless Chromium 152, production Vite build served by launcherd, mock providers",
-  "backendColdReadyMs": 202,
+  "backendColdReadyMs": 133,
   "apiHomeMedianMs": 2,
-  "frontendShellMedianMs": 114,
-  "fcpMedianMs": 100,
-  "lcpMedianMs": 100,
-  "searchMedianMs": 196,
+  "frontendShellMedianMs": 125,
+  "fcpMedianMs": 108,
+  "lcpMedianMs": 108,
+  "searchMedianMs": 198,
   "runs": [
     {
-      "shellReady": 207,
-      "fcp": 176,
-      "lcp": 176,
+      "shellReady": 190,
+      "fcp": 164,
+      "lcp": 164,
+      "searchMs": 203
+    },
+    {
+      "shellReady": 121,
+      "fcp": 108,
+      "lcp": 108,
       "searchMs": 198
     },
     {
-      "shellReady": 113,
+      "shellReady": 120,
       "fcp": 100,
       "lcp": 100,
-      "searchMs": 196
+      "searchMs": 198
     },
     {
-      "shellReady": 114,
-      "fcp": 80,
-      "lcp": 80,
-      "searchMs": 194
-    },
-    {
-      "shellReady": 113,
-      "fcp": 84,
-      "lcp": 84,
-      "searchMs": 196
-    },
-    {
-      "shellReady": 122,
-      "fcp": 100,
-      "lcp": 100,
+      "shellReady": 135,
+      "fcp": 112,
+      "lcp": 112,
       "searchMs": 197
+    },
+    {
+      "shellReady": 125,
+      "fcp": 88,
+      "lcp": 88,
+      "searchMs": 200
     }
   ],
   "shellUnder1s": true,

@@ -84,6 +84,18 @@ try {
   await shot({name: 'home-handheld-320x240-dark', width: 320, height: 240, profile: 'handheld', theme: 'dark', expectHeading: /what would you like to do/i});
   await shot({name: 'home-dap-320x240-oled', width: 320, height: 240, profile: 'dap', theme: 'oled', expectHeading: /what would you like to do/i});
   await shot({name: 'home-eink-720x720-ja', width: 720, height: 720, profile: 'eink', theme: 'dark', locale: 'ja', expectHeading: /次に何をしますか/});
+  await shot({name: 'home-desktop-640x480-dark', width: 640, height: 480, profile: 'desktop', theme: 'dark', expectHeading: /what would you like to do/i});
+  await shot({name: 'home-desktop-1920x1080-dark', width: 1920, height: 1080, profile: 'desktop', theme: 'dark', expectHeading: /what would you like to do/i});
+  // Guard against horizontal overflow at every supported geometry.
+  for (const [w, h] of [[320, 240], [480, 320], [640, 480], [720, 720], [1280, 720], [1920, 1080]]) {
+    const context = await browser.newContext({viewport: {width: w, height: h}});
+    const tab = await context.newPage();
+    await tab.goto(origin, {waitUntil: 'networkidle'});
+    await tab.getByRole('heading').first().waitFor();
+    const overflow = await tab.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+    if (overflow) throw new Error(`horizontal overflow at ${w}x${h}`);
+    await context.close();
+  }
 } finally {
   await browser.close();
   if (stack) await stack.stop();

@@ -8,14 +8,14 @@ Reproduce: `make build && make perf` (writes [`perf-results.json`](perf-results.
 
 | Metric | Median | How it is measured |
 |---|---|---|
-| Backend cold ready | **202 ms** | process spawn → first successful `GET /api/health` |
+| Backend cold ready | **133 ms** | process spawn → first successful `GET /api/health` |
 | `GET /api/home` | **2 ms** | 10 sequential requests, parsed JSON |
-| Frontend shell | **114 ms** | navigation → first page heading visible |
-| FCP | **100 ms** | `first-contentful-paint` paint entry |
-| LCP | **100 ms** | largest-contentful-paint observer |
-| Search interaction | **196 ms** | keypress → first grouped result rendered |
+| Frontend shell | **125 ms** | navigation → first page heading visible |
+| FCP | **108 ms** | `first-contentful-paint` paint entry |
+| LCP | **108 ms** | largest-contentful-paint observer |
+| Search interaction | **198 ms** | keypress → first grouped result rendered |
 
-Shell first paint is comfortably inside the <1 s goal. The 196 ms search figure is dominated by the deliberate 120 ms input debounce plus one round trip; the API itself answers in ~2 ms.
+Shell first paint is comfortably inside the <1 s goal. The 198 ms search figure is dominated by the deliberate 120 ms input debounce plus one round trip; the API itself answers in ~2 ms.
 
 ## What this does not prove
 

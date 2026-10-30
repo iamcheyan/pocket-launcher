@@ -13,3 +13,5 @@
 | `home-handheld-320x240-dark.png` | 320×240 | handheld | dark | en | all mock | `48deb0570317681e` |
 | `home-dap-320x240-oled.png` | 320×240 | dap | oled | en | all mock | `fa682fe359328e16` |
 | `home-eink-720x720-ja.png` | 720×720 | eink | dark | ja | all mock | `222a6af7da031c3c` |
+| `home-desktop-640x480-dark.png` | 640×480 | desktop | dark | en | all mock | `00b34f55461b5c39` |
+| `home-desktop-1920x1080-dark.png` | 1920×1080 | desktop | dark | en | all mock | `75dcff189e76a7e2` |

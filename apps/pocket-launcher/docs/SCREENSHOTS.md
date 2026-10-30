@@ -28,8 +28,12 @@ The script resets session, preferences and profile through the API before each c
 | 11 | Handheld minimum | `home-handheld-320x240-dark.png` | 320×240 | handheld | dark | en |
 | 12 | DAP OLED minimum | `home-dap-320x240-oled.png` | 320×240 | dap | oled | en |
 | 13 | E-Ink Japanese | `home-eink-720x720-ja.png` | 720×720 | eink | dark | ja |
+| 14 | Home mid-size | `home-desktop-640x480-dark.png` | 640×480 | desktop | dark | en |
+| 15 | Home full HD | `home-desktop-1920x1080-dark.png` | 1920×1080 | desktop | dark | en |
 
-Representative resolutions covered: 320×240, 480×320, 720×720, 1280×720.
+Representative resolutions covered: 320×240, 480×320, 640×480, 720×720, 1280×720, 1920×1080.
+
+The capture run also asserts, at every one of those six geometries, that the document has no horizontal overflow — a failure aborts the run.
 
 The generated manifest with per-file SHA-256 prefixes is [`screenshot-manifest.md`](screenshot-manifest.md).
 

@@ -48,10 +48,10 @@ export function buildBackend() {
 }
 
 // Starts launcherd serving both /api and the production SPA build on one origin.
-export async function startStack({port = 18790, fresh = true} = {}) {
+export async function startStack({port = 18790, fresh = true, binary: prebuilt} = {}) {
   await assertPortFree(port);
   mkdirSync(tmpDir, {recursive: true});
-  const binary = buildBackend();
+  const binary = prebuilt ?? buildBackend();
   const db = path.join(tmpDir, `launcherd-${port}.sqlite`);
   if (fresh) {
     rmSync(db, {force: true});

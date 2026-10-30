@@ -2,7 +2,7 @@ import {writeFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {chromium} from 'playwright';
-import {startStack, CHROMIUM} from './stack.mjs';
+import {startStack, buildBackend, CHROMIUM} from './stack.mjs';
 
 const frontendDir = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const port = Number(process.env.POCKET_LAUNCHER_PORT || 18790);
@@ -17,8 +17,10 @@ if (external) {
   await fetch(`${external}/api/health`);
   backendReady = performance.now() - started;
 } else {
+  // Build first so compilation is not counted as launcherd readiness.
+  const binary = buildBackend();
   const started = performance.now();
-  stack = await startStack({port});
+  stack = await startStack({port, binary});
   backendReady = performance.now() - started;
 }
 const origin = external || stack.origin;
