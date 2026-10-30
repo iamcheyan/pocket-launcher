@@ -1,5 +1,12 @@
 # Pocket Launcher
 
+
+> **PocketJS port (product target):** `apps/pocket-launcher/pocket/` is the
+> native PocketJS program (Solid TSX → `.pocket` → `pocket-linux-kms`). The
+> `frontend/` tree remains the frozen React design reference and is not
+> extended. Frames: `docs/pocket/`; verification:
+> `apps/pocket-launcher/POCKETJS-VERIFICATION.md`.
+
 PJOS unified home screen: a PocketJS frontend (TypeScript + React + Vite) served by a
 single Go daemon (`launcherd`) backed by SQLite. Content, apps, notifications and quick
 settings come from deterministic mock providers and are marked `mock: true`.
