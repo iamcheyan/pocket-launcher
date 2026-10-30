@@ -1,0 +1,28 @@
+{
+  "name": "@pocket-launcher/frontend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc -b",
+    "i18n": "node scripts/i18n-parity.mjs",
+    "smoke": "node scripts/ui-smoke.mjs",
+    "screenshots": "node scripts/screenshots.mjs",
+    "perf": "node scripts/perf.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "lucide-react": "^0.468.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "playwright": "^1.50.1",
+    "typescript": "latest"
+  }
+}

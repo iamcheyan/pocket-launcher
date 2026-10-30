@@ -1,0 +1,9 @@
+.tmp/
+node_modules/
+dist/
+launcherd.sqlite
+launcherd.sqlite-*
+*.log
+
+# Go build output
+apps/pocket-launcher/backend/launcherd/launcherd
