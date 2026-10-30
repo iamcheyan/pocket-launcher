@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"log"
+	"net"
 	"net/http"
 	"os"
 	"os/signal"
@@ -55,9 +56,16 @@ func main() {
 	}
 	server := &http.Server{Addr: addr, Handler: s, ReadHeaderTimeout: 5 * time.Second}
 
+	// Bind before announcing: printing "listening" ahead of ListenAndServe made a
+	// port conflict look like a successful start followed by an unrelated crash.
+	listener, err := net.Listen("tcp", addr)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("launcherd listening on %s (mock providers)", listener.Addr())
+
 	go func() {
-		log.Printf("launcherd listening on %s (mock providers)", addr)
-		if err := server.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+		if err := server.Serve(listener); err != nil && !errors.Is(err, http.ErrServerClosed) {
 			log.Fatal(err)
 		}
 	}()

@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"encoding/json"
+	"net"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -302,5 +303,39 @@ func TestConcurrentReadsFinish(t *testing.T) {
 	case <-done:
 	case <-time.After(10 * time.Second):
 		t.Fatal("repeated home/apps reads deadlocked")
+	}
+}
+
+// The server must report the bound address only after a successful bind, and
+// must fail loudly on a port conflict rather than announcing a phantom start.
+func TestListenReportsBoundAddressAndFailsOnConflict(t *testing.T) {
+	first, err := net.Listen("tcp", "127.0.0.1:0")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer first.Close()
+
+	second, err := net.Listen("tcp", first.Addr().String())
+	if err == nil {
+		second.Close()
+		t.Fatalf("expected the second bind on %s to fail", first.Addr())
+	}
+	if !strings.Contains(err.Error(), "address already in use") {
+		t.Fatalf("unexpected bind error: %v", err)
+	}
+
+	free, err := net.Listen("tcp", "127.0.0.1:0")
+	if err != nil {
+		t.Fatal(err)
+	}
+	addr := free.Addr().String()
+	free.Close()
+	third, err := net.Listen("tcp", addr)
+	if err != nil {
+		t.Fatalf("expected %s to be reusable after close: %v", addr, err)
+	}
+	defer third.Close()
+	if third.Addr().String() != addr {
+		t.Fatalf("bound %s, reported %s", addr, third.Addr())
 	}
 }
